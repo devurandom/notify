@@ -63,7 +63,7 @@ pub mod prelude {
 
     pub use super::backend::{
         Backend as NotifyBackend, BoxedBackend, Error as BackendError,
-        NewResult as NewBackendResult,
+        NewResult as NewBackendResult, ErrorWrap as BackendErrorWrap,
     };
 
     #[cfg(unix)]

@@ -72,11 +72,13 @@ impl<'f> Manager<'f> {
             match life.bind(paths) {
                 Ok(_) => return Ok(()),
                 Err(e) => {
-                    println!("Got error: {:?}", e);
-                    match e {
-                        be @ BackendError::NonExistent(_) => return Err(be),
-                        be => {
-                            err = Some(be);
+                    println!("Got error(s): {:?}", e);
+                    for ie in e.to_error_vec() {
+                        match ie {
+                            be @ BackendError::NonExistent(_) => return Err(e),
+                            be => {
+                                err = Some(be);
+                            }
                         }
                     }
                 }

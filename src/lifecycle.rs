@@ -1,6 +1,6 @@
 use backend::{
     prelude::{
-        chrono::Utc, futures::{stream::poll_fn, Async, Future, Poll, Sink, Stream}, BackendError,
+        chrono::Utc, futures::{stream::poll_fn, Async, Future, Poll, Sink, Stream}, BackendErrorWrap,
         BoxedBackend, Capability, Evented, NotifyBackend as Backend, PathBuf,
     },
     stream,
@@ -17,7 +17,7 @@ use tokio::{
 };
 
 /// Convenience return type for methods dealing with backends.
-pub type Status = Result<(), BackendError>;
+pub type Status = Result<(), BackendErrorWrap>;
 
 /// Convenience type used in subscription channels.
 pub type Sub = Result<stream::Item, Arc<stream::Error>>;

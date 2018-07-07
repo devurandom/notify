@@ -23,7 +23,7 @@ impl NotifyBackend for Backend {
     }
 
     fn new(_paths: Vec<PathBuf>) -> NewBackendResult {
-        Err(BackendError::NotImplemented)
+        Err(BackendError::NotImplemented.into())
     }
 
     fn capabilities() -> Vec<Capability> {
